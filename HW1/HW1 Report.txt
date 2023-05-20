@@ -1,0 +1,39 @@
+Functional Requirements:
+- Street class can take structures and show them in three different format. View from left, view from right and silhouette view.
+- Structures can be added to the street either directly to the first available empty spaces or a position that user can specify.
+- Home, Office, Market and Playground are child classes. These have different properties from each other. Program can distinguish them and show which ones of them has inclueded into the
+street.
+- User can change the street view by adding and deleting structures until they decide to exit the program.
+
+Non-functional Requirements: 
+- Program is shown in the console
+- Program end whenever the user ask.
+- Program response instantly, storage space requirement is negligible
+- Program can run anyplace that jvm can run.
+
+
+
+Problem Solution Approach:
+To make the program dynamic just using array I created 2 classes named StructureContainer and StreetContainer. 
+	StructureContainer behaves like vector. It just uses arrays but when it has reached its capacity the capacity of it doubles by automatically. This class holds Structures 
+which is the base abstract class of the Building and Playground.
+	StreetContainer class behaves like StructureContainer but it holds boolean values which indicates what places are empty.
+	These two classes interact with Street class to keep record of the Structures and show them properly. House, Office, Market and Playground classes thus can be added or removed
+dynamically.
+	Street length is determined by user at the start of the program. Height value of the street is determined by the highest structure which user added and it can dynamically change
+whenever the user adds higher structure
+	Program can show the view three different way. Left view, right view and silhouette view. Structures at the left side of the street may not be seen from the right view if any
+other structure is front of it and bigger than it. But in the left view if same situation occurs the small structure at the left side is seen.
+	Program has Menu class which is the class make the user interact with the program. User can add/delete structures and can see which ones are on the street from this class.
+	Driver function is in the Main class. Whenever the program starts it is executed and shows the functions are working. Prints 3 different view to show the changes that has been made.
+
+
+
+
+Test Case:
+Add Structures to a street to get a view like in the Homework 1 document.
+Delete rightmost structure and show the result. 
+Delete a structure that doesn't exist to verify error handling is working.
+Try to add a structure where is occupied with another structure.
+Try to exceed the street by addind larger structure than street.
+Show the structures in viewing mode.
